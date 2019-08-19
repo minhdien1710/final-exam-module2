@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/create">Create new city</a>
+<h1>City List</h1>
+<table border="1">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+    </tr>
+    <th:block th:each="city : ${cities}">
+        <tr>
+            <td th:text="${city.id}"></td>
+            <td><a th:href="@{/view/__${city.id}__}" th:text="${city.name}"></a>></td>
+            <td th:text="${city.country.name}"></td>
+            <td><a th:href="@{/edit/__${city.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete/__${city.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{'/cities'(page=${cities.number - 1})}" th:if="${cities.hasPrevious()}">Previous</a>
+    <span th:text="${cities.number + 1}"></span>/<span th:text="${cities.totalPages}"></span>
+    <a th:href="@{'/cities'(page=${cities.number + 1})}" th:if="${cities.hasNext()}">Next</a>
+</div>
+</body>
+</html>

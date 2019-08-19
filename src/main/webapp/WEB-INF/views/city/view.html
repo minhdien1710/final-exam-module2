@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>View City</title>
+</head>
+<body>
+<h2><a th:href="@{/WEB-INF/views/city/list.html}">Back to list</a></h2>
+<p th:text="${city.name}"></p>
+<p th:text="${city.country.name}"></p>
+<p th:text="${city.area}"></p>
+<p th:text="${city.population}"></p>
+<p th:text="${city.GDP}"></p>
+<p th:text="${city.description}"></p>
+<input type="button" th:action="/update" value="Chinh sua">
+<input type="button" th:action="/detele" value="xoa">
+</body>
+</html>
